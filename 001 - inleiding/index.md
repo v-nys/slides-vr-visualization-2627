@@ -115,6 +115,18 @@ note:
 
 ---
 
+## Hardware van een VR-systeem
+
+- displays (output)
+- sensors (input)
+- computers
+
+note:
+
+- displays in de brede zin!
+
+---
+
 ## een volledig VR systeem
 
 ![normale situatie](images/world_to_brain.png)
@@ -125,6 +137,10 @@ note:
   - maar we werken niet altijd in een gaming context
   - en gaming engines zijn normaal niet "VR-first"
   - omvat rendering, physics,...
+
+---
+
+![VWG](images/vwg.png)
 
 ---
 
@@ -154,14 +170,6 @@ note:
     - kan nodig zijn voor illusie (perception of stationarity)
     - kan "nice to have" zijn voor illusie (orkest door koptelefoon terwijl we rondbewegen)
     - kan nuttig zijn voor performance (foveated rendering)
-
----
-
-TODO: hardwarecomponenten p. 44 oplijsten
-TODO: diagram virtual world generator toevoegen (van p 50)
-TODO: paar optische illusies
-TODO: effect van proprioceptie
-TODO: vection
 
 ---
 
