@@ -23,9 +23,7 @@ note:
 
 ## Opdracht
 
-- port deze video's naar het gegeven project:
-  - [video 1](https://www.youtube.com/watch?v=v-jLvxlDSOY&authuser=0)
-  - [video 2](https://www.youtube.com/watch?v=iz0tcT1cGBU&authuser=0)
-- vermijd "transliteratie" van de code
-  - breng de ideeën eerst in kaart
-  - vertaal dan op basis daarvan
+- port [deze video](https://www.youtube.com/watch?v=v-jLvxlDSOY&authuser=0) naar het gegeven project:
+  - vermijd "transliteratie" van de code
+    - breng de ideeën eerst in kaart
+    - vertaal dan op basis daarvan
