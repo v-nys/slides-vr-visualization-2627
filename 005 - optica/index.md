@@ -44,8 +44,8 @@ note:
 
 ## Interactie met materialen
 
-![prisma](./images/prism.jpeg)
-![Vanta black](./images/vantablack.jpg)
+<img width="400px" src="./images/prism.jpeg">
+<img width="400px" src="./images/vantablack.jpg">
 
 note:
 
@@ -130,8 +130,8 @@ note:
 
 ## Simpele convexe lens
 
-![convexe lens loodrecht](./images/4-11.png)
-![convexe lens niet loodrecht](./images/4-12.png)
+<img width="400px" src="./images/4-11.png">
+<img width="400px" src="./images/4-12.png">
 
 note:
 
@@ -192,8 +192,8 @@ note:
 
 ## Chromatische aberratie
 
-![chromatische aberratie theorie](./images/4-17.png)
-![chromatische aberratie praktijk](./images/4-18.png)
+<img width="400px" src="./images/4-17.png">
+<img width="400px" src="./images/4-18.png">
 
 note:
 
@@ -226,10 +226,12 @@ note:
 
 ## Verwerking lichtstralen
 
-![mechanismen oog 1](./images/4-25.png)
-![mechanismen oog 2](./images/4-26.png)
-![mechanismen oog 3](./images/4-27.png)
-![mechanismen oog 4](./images/4-28.png)
+<div style="display: grid; grid-template-areas: 'tl tr' 'bl br'">
+<img style="grid-area: tl" src="./images/4-25.png">
+<img style="grid-area: tr" src="./images/4-26.png">
+<img style="grid-area: bl" src="./images/4-27.png">
+<img style="grid-area: br" src="./images/4-28.png">
+</div>
 
 note:
 
