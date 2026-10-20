@@ -68,7 +68,7 @@ note:
 
 ---
 
-![raster](./images/raster-image.png)
+![raster](./images/raster.webp)
 
 note:
 
