@@ -31,7 +31,8 @@ note:
 
 - zullen enkel bovenlichaam voorzien van collision shape
 - anders zitten we vast tegen trappen
-- willen niet omhoog / omlaag teleporteren zodra we op een trede (of ervan af) stappen, willen dat onze hoogte vloeiend wordt aangepast
+- willen niet omhoog / omlaag teleporteren zodra we op een trede (of ervan af) stappen, willen dat onze hoogte **vloeiend** wordt aangepast
+  - onmiddellijke correctie / constante snelheid / lineaire versnelling zouden allemaal onnatuurlijk effect opleveren, zeker als de targetvalue regelmatig verandert
 
 ---
 
