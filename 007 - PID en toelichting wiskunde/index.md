@@ -160,17 +160,75 @@ note:
 
 ---
 
-# Truukjes Bastiaan
+# Toelichting video's Bastiaan
 
 ---
 
-- origin node: punt in de wereld dat gemapt wordt op punt in echte wereld, fysiek rondwandelen zou dit niet mogen verplaatsen (maar wel onze player collision shape, want anders kunnen we door muren wandelen)
-  (- beweging met controller moet origin **en** player collision shape beïnvloeden maar onze player collsion shape moet ons wel volgen, dus tijdens beweging met de controller moeten we
-    - oplossing: fysieke beweging: zoals beweging met controller, maar bij elke verplaatsing zetten we de origin terug
-      - implementatie: )
+## Beweging
 
-- axis subscene: elk punt is ergens in world space, maar we kunnen ook zien in local space ten opzichte van parent
-  - axis subscene bevindt zich in de oorsprong in local space en assen zijn de **geroteerde** assen van de parent
-  - dus toont in-game hoe onze lokale assen staan
+- origin = fysiek referentiepunt
+  - fysiek bewegen moet personage verplaatsen, origin laten staan
+  - controller moet beide doen
 
+---
 
+```gdscript
+	var camera_transform = self.transform * camera.transform
+	var desired_position: Vector3 = camera_transform.origin * Vector3(1,0,1)
+	desired_position = character_body.global_transform * desired_position
+	var original_charbody_position = character_body.global_position
+	character_body.move_and_collide(desired_position_barring_offset - original_charbody_position)
+	var delta_movement = character_body.global_position - original_charbody_position
+	self.global_position -= delta_movement
+```
+
+note:
+
+- achterhaal transform van **camera** ten opzichte van `CharacterBody3D`
+- verwijder Y-component = plaats op niveau "voeten"
+- vertaal die positie naar world space (omdat we met `velocity` gaan werken en `velocity` wordt uitgedrukt in world space)
+  - dit is waar we de rest van het character naartoe willen "slepen", i.e. we willen hoofd volgen met lichaam
+- **probeer** character te bewegen (maar stop tegen obstakel)
+- check resulterende verplaatsing
+  - Bastiaan doet dit complexer dan nodig, je kan gewoon een globale positie opvragen en instellen
+- zet origin terug in omgekeerde richting
+
+---
+
+## Rotatie
+
+- zelfde regels
+  - fysiek roteren moet personage draaien, origin laten staan
+  - controller moet origin mee bewegen
+
+---
+
+```gdscript
+var forward = camera_transform.basis.z * Vector3(1.0, 0.0, 1.0)
+camera_transform.origin = Vector3()
+var rotation_transform = camera_transform.looking_at(forward, Vector3.UP, true)
+character_body.transform.basis = rotataion_transform.basis * character_body.transform.basis
+transform = rotation_transform.inverse() * transform
+```
+
+note:
+
+- "remove position and tilt": bedoeling is om roll en pitch te verwijderen, enkel yaw bekijken
+- "start by determining the forward vector": dus kijkrichting
+- remove position info: willen enkel rotatie van de camera achterhalen, camera kan idd getransleerd zijn
+
+---
+
+## Aanpassing vignette shader
+
+```text
+vec4 eye = PROJECTION_MATRIX * vec4(0.0, 0.0, 100.0, 1.0);
+v += eye.xy / eye.w;
+```
+
+note:
+
+- projectiematrix zet camera space (pyramide zonder top) om naar clip space (kubus)
+- verschillend resultaat per oog!
+- deling door `w` is de perspectiefdeling (die visueel effect verkleint naargelang afstand)
+- dus elke vertex krijgt zelfde offset als oog en samen blijven ze cirkel vormen rond midden oog
